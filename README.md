@@ -100,7 +100,7 @@ node --test tests/weather.test.mjs tests/comparison.test.mjs tests/location.test
 
 Service Workerはトップページを`/`から取得し、`index.html`本文と照合します。CloudflareのHTML URL正規化に対応しています。`app/404.html`により存在しないパスは404になります。
 
-以前の[Workers公開URL](https://sun-and-rain.kei1127miyamoto.workers.dev/)は保持します。こちらはGit連携の自動配信対象ではありません。手動で更新する場合は`wrangler deploy --config wrangler.workers.jsonc`を使用します。
+従来のWorkersサイトは2026-09-27に削除しました。公開先はCloudflare Pagesに統一しています。
 
 [配信・セキュリティ・費用の検証記録とiPhone確認手順](docs/verification/deployment-20260927/README.md)
 

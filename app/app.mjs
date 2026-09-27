@@ -7,7 +7,7 @@ let location = LOCATION, locationGeneration = 0;
 
 const $ = id => document.getElementById(id);
 const colors = { prob: 'var(--rain)', amount: 'var(--rain)', sun: 'var(--sun)', uv: 'var(--uv)', temp: 'var(--temp)' };
-const tracks = [['prob', '雨', '確率 %'], ['amount', '降水量', 'mm / 時'], ['sun', '日照', '分 / 時'], ['uv', 'UV', '1時間平均'], ['temp', '気温', '℃・正時']];
+const tracks = [['prob', '雨', '確率 %'], ['amount', '降水量', 'mm / 時'], ['sun', '日照', '分 / 時'], ['uv', 'UV指数', '1時間平均'], ['temp', '気温', '℃・正時']];
 const round = (value, digits = 1) => value == null ? 'データなし' : String(Number(value.toFixed(digits)));
 const escape = text => String(text).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 let sources = {}, selected = 0, busy = false, lastAttempt = 0;
@@ -112,8 +112,8 @@ function select(index) {
   $('hour-selector').setAttribute('aria-valuetext', intervalLabel(row));
   $('previous').disabled = selected === 0;
   $('next').disabled = selected === view.rows.length - 1;
-  const metrics = [['降水確率', 'prob', '%'], ['降水量 / 1時間', 'amount', 'mm'], ['日照見込み / 1時間', 'sun', '分'], ['UV / 1時間平均', 'uv', '']];
-  $('selection-content').innerHTML = `<p class="weather-description">${formatTime(row.start)}の予報：${weatherLabel(row.code)} <strong>${round(row.temp)}${row.temp === null ? '' : '℃'}</strong></p><dl class="metric-grid">${metrics.map(([label, key, unit]) => `<div class="metric"><dt>${label}</dt><dd${row[key] === null ? ' class="no-data"' : ''}>${round(row[key], key === 'sun' ? 0 : 1)}<small>${row[key] === null ? '' : unit}</small></dd></div>`).join('')}</dl><p class="supplement">${formatTime(row.start)}の湿度 ${round(row.humidity)}${row.humidity === null ? '' : '%'} · 風速 ${round(row.wind)}${row.wind === null ? '' : ' m/s'}</p><p class="interval-note">降水・日照・UVは${intervalLabel(row)}全体の値です。${row.start < view.now || row.end > view.end ? '表示範囲外の時間も含むため、残り時間だけの値ではありません。' : ''}</p>`;
+  const metrics = [['降水確率', 'prob', '%'], ['降水量 / 1時間', 'amount', 'mm'], ['日照見込み / 1時間', 'sun', '分'], ['UV指数 / 1時間平均', 'uv', '']];
+  $('selection-content').innerHTML = `<p class="weather-description">${formatTime(row.start)}の予報：${weatherLabel(row.code)} <strong>${round(row.temp)}${row.temp === null ? '' : '℃'}</strong></p><dl class="metric-grid">${metrics.map(([label, key, unit]) => `<div class="metric"><dt>${label}</dt><dd${row[key] === null ? ' class="no-data"' : ''}>${round(row[key], key === 'sun' ? 0 : 1)}<small>${row[key] === null ? '' : unit}</small></dd></div>`).join('')}</dl><p class="supplement">${formatTime(row.start)}の湿度 ${round(row.humidity)}${row.humidity === null ? '' : '%'} · 風速 ${round(row.wind)}${row.wind === null ? '' : ' m/s'}</p><p class="interval-note">降水・日照・UV指数は${intervalLabel(row)}全体の値です。${row.start < view.now || row.end > view.end ? '表示範囲外の時間も含むため、残り時間だけの値ではありません。' : ''}</p>`;
   const selectedChanges = comparison.changes.filter(item => item.start === row.start);
   if (selectedChanges.length) $('selection-content').insertAdjacentHTML('beforeend', `<div class="selected-changes"><p>前回の表示から</p>${selectedChanges.map(item => `<p>${changeText(item)}</p>`).join('')}</div>`);
   // Preserve nodes (and keyboard focus on controls) when selecting a time.

@@ -4,7 +4,7 @@ export const METRICS = Object.freeze({
   prob: { source: 'uvpop', label: '降水確率', unit: '%' },
   amount: { source: 'weather', label: '降水量', unit: 'mm' },
   sun: { source: 'weather', label: '日照見込み', unit: '分' },
-  uv: { source: 'uvpop', label: 'UV（1時間平均）', unit: '' },
+  uv: { source: 'uvpop', label: 'UV指数（1時間平均）', unit: '' },
   temp: { source: 'weather', label: '気温', unit: '℃' }
 });
 const finite = value => typeof value === 'number' && Number.isFinite(value);

@@ -26,7 +26,11 @@ node scripts/serve.mjs
 
 ## 次の段階
 
-公開URL: https://sun-and-rain.kei1127miyamoto.workers.dev/
+公開URL: https://sun-and-rain.pages.dev/
+
+GitHub: https://github.com/kimymt/sun-and-rain
+
+以前のWorkers URLとは別オリジンのため、保存地点・予報は自動移行されません。Pages側で地点を設定してください。
 
 HTTPSでの実API接続・保存・オフライン再読込をChromiumで確認済み。次はiPhone実機でホーム画面追加・再起動・更新・5秒での読み取りを検証する。
 
@@ -76,16 +80,27 @@ node scripts/build-sw.mjs --check
 
 ## HTTPS配信
 
-Cloudflare Workers Static Assetsで`app/`のみを配信。Workerの独自処理・DB・APIキーは不要です。既存のWranglerログインを利用します。
+Cloudflare PagesのGit連携で、GitHubの`kimymt/sun-and-rain`の`main`へのpushから自動配信します。公開対象は`app/`のみです。Functions・DB・APIキーは不要です。
+
+- プロジェクト: `sun-and-rain`
+- 本番ブランチ: `main`
+- ビルドコマンド: `node scripts/build-sw.mjs`
+- 出力ディレクトリ: `app`
+- プレビュー配信: 無効
+- Pages設定: `wrangler.jsonc`
+- HTTPヘッダー: `app/_headers`
+
+配信前の確認:
 
 ```sh
 node scripts/build-sw.mjs
 node scripts/build-sw.mjs --check
-wrangler deploy --dry-run
-wrangler deploy
+node --test tests/weather.test.mjs tests/comparison.test.mjs tests/location.test.mjs
 ```
 
-Service Workerはトップページを`/`から取得し、`index.html`本文と照合します。CloudflareのHTML URL正規化に対応しています。設定は`wrangler.jsonc`、HTTPヘッダーは`app/_headers`です。
+Service Workerはトップページを`/`から取得し、`index.html`本文と照合します。CloudflareのHTML URL正規化に対応しています。`app/404.html`により存在しないパスは404になります。
+
+以前の[Workers公開URL](https://sun-and-rain.kei1127miyamoto.workers.dev/)は保持します。こちらはGit連携の自動配信対象ではありません。手動で更新する場合は`wrangler deploy --config wrangler.workers.jsonc`を使用します。
 
 [配信・セキュリティ・費用の検証記録とiPhone確認手順](docs/verification/deployment-20260927/README.md)
 

@@ -1,0 +1,23 @@
+{
+  "time": "2026-09-27T09:45:28.271Z",
+  "browser": "153.0.8010.12",
+  "mockedAPI": true,
+  "checks": [
+    "first visible render persisted with location and source timestamps",
+    "reload compares against prior displayed window, grouped markers and selected values",
+    "API-offline reload restores prior values and does not overwrite history",
+    "hidden completion is not marked displayed; visible render commits later",
+    "injected quota failure aborts transaction, keeps prior record, and reports failure",
+    "atomic transaction rejects an older writer from another connection",
+    "corrupt record rejected and replaced after valid forecast is displayed",
+    "unknown schema preserved and storage disabled, forecast still works",
+    "unavailable storage falls back to memory and forecast remains usable"
+  ],
+  "errors": [],
+  "limitations": [
+    "visibility state simulated",
+    "quota failure injected",
+    "no real iPhone",
+    "no offline app-shell reload"
+  ]
+}

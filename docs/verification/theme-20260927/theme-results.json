@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "theme": "light",
+      "color": "rgb(41, 79, 67)",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "color": "rgb(145, 201, 175)",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "theme": "light",
+      "color": "rgb(41, 79, 67)",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "color": "rgb(41, 79, 67)",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "color": "rgb(145, 201, 175)",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "color": "rgb(41, 79, 67)",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "weather": "mock",
+  "device": "desktop Chromium"
+}

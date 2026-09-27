@@ -1,0 +1,129 @@
+{
+  "status": "PASS",
+  "browser": "153.0.8010.12",
+  "time": "2026-09-27T08:45:34.052Z",
+  "url": "http://127.0.0.1:55674",
+  "results": [
+    {
+      "width": 320,
+      "scenario": "rain",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "scenario": "sun",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "scenario": "night",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "scenario": "missing",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "scenario": "stale",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "scenario": "rain",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "scenario": "sun",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "scenario": "night",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "scenario": "missing",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "scenario": "stale",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "scenario": "rain",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "scenario": "sun",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "scenario": "night",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "scenario": "missing",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "scenario": "stale",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "scenario": "rain",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "scenario": "sun",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "scenario": "night",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "scenario": "missing",
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "scenario": "stale",
+      "horizontalOverflow": false
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "real button clicks",
+    "range keyboard Home/End/ArrowLeft",
+    "chart click/tap",
+    "five scenarios",
+    "missing state",
+    "stale state",
+    "day boundary",
+    "13 interval list",
+    "no page overflow",
+    "CSS 200% font size"
+  ],
+  "unverified": [
+    "iPhone Safari",
+    "VoiceOver",
+    "OS text size",
+    "human five-second comprehension",
+    "API integration",
+    "PWA lifecycle"
+  ]
+}

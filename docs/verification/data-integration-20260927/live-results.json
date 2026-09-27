@@ -1,0 +1,17 @@
+{
+  "time": "2026-09-27T08:56:13.308Z",
+  "browser": "153.0.8010.12",
+  "network": [
+    {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=35.6812&longitude=139.7671&models=best_match&hourly=temperature_2m%2Cprecipitation%2Csunshine_duration%2Cshortwave_radiation%2Crelative_humidity_2m%2Cwind_speed_10m%2Cis_day%2Cweather_code&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo&temperature_unit=celsius&wind_speed_unit=ms&precipitation_unit=mm",
+      "status": 200
+    },
+    {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=35.6812&longitude=139.7671&models=gfs_global&hourly=uv_index%2Cprecipitation_probability&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo&temperature_unit=celsius&wind_speed_unit=ms&precipitation_unit=mm",
+      "status": 200
+    }
+  ],
+  "status": "予報を取得しました。",
+  "sources": "気温・天気・日照など：9/27 17:56取得\n\nUV・降水確率：9/27 17:56取得",
+  "errors": []
+}

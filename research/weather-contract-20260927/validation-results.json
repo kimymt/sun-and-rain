@@ -1,0 +1,284 @@
+{
+  "verifiedAt": "2026-09-27T08:37:15.894952+00:00",
+  "status": "PASS",
+  "httpSamples": {
+    "chichijima-best": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 7.65,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 0,
+          "max": 6,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:27:42 GMT"
+    },
+    "chichijima-gfs": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 7.65,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 0,
+          "max": 6,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:26:06 GMT"
+    },
+    "kamikochi-gfs": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 1.9,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 52,
+          "max": 100,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:33:40 GMT"
+    },
+    "matsumoto-best": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 3.75,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 44,
+          "max": 75,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:27:41 GMT"
+    },
+    "matsumoto-gfs": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 3.75,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 42,
+          "max": 100,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:26:06 GMT"
+    },
+    "naha-best": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 6.9,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 29,
+          "max": 98,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:27:41 GMT"
+    },
+    "naha-gfs": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 6.9,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 19,
+          "max": 94,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:26:07 GMT"
+    },
+    "sapporo-best": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 1.45,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 0,
+          "max": 97,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:27:42 GMT"
+    },
+    "sapporo-gfs": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 1.45,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 0,
+          "max": 97,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:26:11 GMT"
+    },
+    "tokyo-best": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 3.35,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 8,
+          "max": 88,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:27:42 GMT"
+    },
+    "tokyo-cams": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 1.85,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:31:02 GMT"
+    },
+    "tokyo-gfs": {
+      "rows": 24,
+      "firstJst": "2026-09-27T17:00:00+09:00",
+      "lastJst": "2026-09-28T16:00:00+09:00",
+      "metrics": {
+        "uv_index": {
+          "min": 0.0,
+          "max": 3.35,
+          "nullCount": 0
+        },
+        "precipitation_probability": {
+          "min": 13,
+          "max": 58,
+          "nullCount": 0
+        }
+      },
+      "serverDate": "Sun, 27 Sep 2026 08:26:07 GMT"
+    }
+  },
+  "timeAlignedComparison": {
+    "tokyo": {
+      "uv_index": {
+        "overlap": 24,
+        "different": 0
+      },
+      "precipitation_probability": {
+        "overlap": 24,
+        "different": 24
+      }
+    },
+    "sapporo": {
+      "uv_index": {
+        "overlap": 24,
+        "different": 0
+      },
+      "precipitation_probability": {
+        "overlap": 24,
+        "different": 15
+      }
+    },
+    "naha": {
+      "uv_index": {
+        "overlap": 24,
+        "different": 0
+      },
+      "precipitation_probability": {
+        "overlap": 24,
+        "different": 23
+      }
+    },
+    "chichijima": {
+      "uv_index": {
+        "overlap": 24,
+        "different": 0
+      },
+      "precipitation_probability": {
+        "overlap": 24,
+        "different": 22
+      }
+    },
+    "matsumoto": {
+      "uv_index": {
+        "overlap": 24,
+        "different": 0
+      },
+      "precipitation_probability": {
+        "overlap": 24,
+        "different": 24
+      }
+    }
+  },
+  "browser": {
+    "version": "153.0.8010.12",
+    "origin": "http://127.0.0.1:55032",
+    "corsRequestsPassed": 2
+  },
+  "sourceFilesHashChecked": 20,
+  "comparisonCaseSpecifications": 12,
+  "comparisonEngineExecuted": false,
+  "notVerified": [
+    "iPhone Safari",
+    "production origin",
+    "distinct model update cycles",
+    "forecast accuracy",
+    "deployed API source SHA"
+  ]
+}

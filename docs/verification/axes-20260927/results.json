@@ -1,0 +1,902 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "theme": "light",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 279.90625,
+              "bottom": 289.34375
+            },
+            {
+              "value": 50,
+              "top": 300.984375,
+              "bottom": 310.421875
+            },
+            {
+              "value": 0,
+              "top": 322.0625,
+              "bottom": 331.5
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 339.90625,
+              "bottom": 349.34375
+            },
+            {
+              "value": 1.5,
+              "top": 360.984375,
+              "bottom": 370.421875
+            },
+            {
+              "value": 0,
+              "top": 382.0625,
+              "bottom": 391.5
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 399.90625,
+              "bottom": 409.34375
+            },
+            {
+              "value": 30,
+              "top": 420.984375,
+              "bottom": 430.421875
+            },
+            {
+              "value": 0,
+              "top": 442.0625,
+              "bottom": 451.5
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 459.90625,
+              "bottom": 469.34375
+            },
+            {
+              "value": 5.5,
+              "top": 480.984375,
+              "bottom": 490.421875
+            },
+            {
+              "value": 0,
+              "top": 502.0625,
+              "bottom": 511.5
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 519.90625,
+              "bottom": 529.34375
+            },
+            {
+              "value": 20,
+              "top": 540.984375,
+              "bottom": 550.421875
+            },
+            {
+              "value": 15,
+              "top": 562.0625,
+              "bottom": 571.5
+            }
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 279.90625,
+              "bottom": 289.34375
+            },
+            {
+              "value": 50,
+              "top": 300.984375,
+              "bottom": 310.421875
+            },
+            {
+              "value": 0,
+              "top": 322.0625,
+              "bottom": 331.5
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 339.90625,
+              "bottom": 349.34375
+            },
+            {
+              "value": 1.5,
+              "top": 360.984375,
+              "bottom": 370.421875
+            },
+            {
+              "value": 0,
+              "top": 382.0625,
+              "bottom": 391.5
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 399.90625,
+              "bottom": 409.34375
+            },
+            {
+              "value": 30,
+              "top": 420.984375,
+              "bottom": 430.421875
+            },
+            {
+              "value": 0,
+              "top": 442.0625,
+              "bottom": 451.5
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 459.90625,
+              "bottom": 469.34375
+            },
+            {
+              "value": 5.5,
+              "top": 480.984375,
+              "bottom": 490.421875
+            },
+            {
+              "value": 0,
+              "top": 502.0625,
+              "bottom": 511.5
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 519.90625,
+              "bottom": 529.34375
+            },
+            {
+              "value": 20,
+              "top": 540.984375,
+              "bottom": 550.421875
+            },
+            {
+              "value": 15,
+              "top": 562.0625,
+              "bottom": 571.5
+            }
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 279.90625,
+              "bottom": 289.34375
+            },
+            {
+              "value": 50,
+              "top": 300.984375,
+              "bottom": 310.421875
+            },
+            {
+              "value": 0,
+              "top": 322.0625,
+              "bottom": 331.5
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 339.90625,
+              "bottom": 349.34375
+            },
+            {
+              "value": 1.5,
+              "top": 360.984375,
+              "bottom": 370.421875
+            },
+            {
+              "value": 0,
+              "top": 382.0625,
+              "bottom": 391.5
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 399.90625,
+              "bottom": 409.34375
+            },
+            {
+              "value": 30,
+              "top": 420.984375,
+              "bottom": 430.421875
+            },
+            {
+              "value": 0,
+              "top": 442.0625,
+              "bottom": 451.5
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 459.90625,
+              "bottom": 469.34375
+            },
+            {
+              "value": 5.5,
+              "top": 480.984375,
+              "bottom": 490.421875
+            },
+            {
+              "value": 0,
+              "top": 502.0625,
+              "bottom": 511.5
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 519.90625,
+              "bottom": 529.34375
+            },
+            {
+              "value": 20,
+              "top": 540.984375,
+              "bottom": 550.421875
+            },
+            {
+              "value": 15,
+              "top": 562.0625,
+              "bottom": 571.5
+            }
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 279.90625,
+              "bottom": 289.34375
+            },
+            {
+              "value": 50,
+              "top": 300.984375,
+              "bottom": 310.421875
+            },
+            {
+              "value": 0,
+              "top": 322.0625,
+              "bottom": 331.5
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 339.90625,
+              "bottom": 349.34375
+            },
+            {
+              "value": 1.5,
+              "top": 360.984375,
+              "bottom": 370.421875
+            },
+            {
+              "value": 0,
+              "top": 382.0625,
+              "bottom": 391.5
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 399.90625,
+              "bottom": 409.34375
+            },
+            {
+              "value": 30,
+              "top": 420.984375,
+              "bottom": 430.421875
+            },
+            {
+              "value": 0,
+              "top": 442.0625,
+              "bottom": 451.5
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 459.90625,
+              "bottom": 469.34375
+            },
+            {
+              "value": 5.5,
+              "top": 480.984375,
+              "bottom": 490.421875
+            },
+            {
+              "value": 0,
+              "top": 502.0625,
+              "bottom": 511.5
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 59,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 519.90625,
+              "bottom": 529.34375
+            },
+            {
+              "value": 20,
+              "top": 540.984375,
+              "bottom": 550.421875
+            },
+            {
+              "value": 15,
+              "top": 562.0625,
+              "bottom": 571.5
+            }
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "theme": "light",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 316.453125,
+              "bottom": 325.890625
+            },
+            {
+              "value": 50,
+              "top": 340.734375,
+              "bottom": 350.171875
+            },
+            {
+              "value": 0,
+              "top": 365.03125,
+              "bottom": 374.46875
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 385.453125,
+              "bottom": 394.890625
+            },
+            {
+              "value": 1.5,
+              "top": 409.734375,
+              "bottom": 419.171875
+            },
+            {
+              "value": 0,
+              "top": 434.03125,
+              "bottom": 443.46875
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 454.453125,
+              "bottom": 463.890625
+            },
+            {
+              "value": 30,
+              "top": 478.734375,
+              "bottom": 488.171875
+            },
+            {
+              "value": 0,
+              "top": 503.03125,
+              "bottom": 512.46875
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 523.453125,
+              "bottom": 532.890625
+            },
+            {
+              "value": 5.5,
+              "top": 547.734375,
+              "bottom": 557.171875
+            },
+            {
+              "value": 0,
+              "top": 572.03125,
+              "bottom": 581.46875
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 592.453125,
+              "bottom": 601.890625
+            },
+            {
+              "value": 20,
+              "top": 616.734375,
+              "bottom": 626.171875
+            },
+            {
+              "value": 15,
+              "top": 641.03125,
+              "bottom": 650.46875
+            }
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "theme": "dark",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 316.453125,
+              "bottom": 325.890625
+            },
+            {
+              "value": 50,
+              "top": 340.734375,
+              "bottom": 350.171875
+            },
+            {
+              "value": 0,
+              "top": 365.03125,
+              "bottom": 374.46875
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 385.453125,
+              "bottom": 394.890625
+            },
+            {
+              "value": 1.5,
+              "top": 409.734375,
+              "bottom": 419.171875
+            },
+            {
+              "value": 0,
+              "top": 434.03125,
+              "bottom": 443.46875
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 454.453125,
+              "bottom": 463.890625
+            },
+            {
+              "value": 30,
+              "top": 478.734375,
+              "bottom": 488.171875
+            },
+            {
+              "value": 0,
+              "top": 503.03125,
+              "bottom": 512.46875
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 523.453125,
+              "bottom": 532.890625
+            },
+            {
+              "value": 5.5,
+              "top": 547.734375,
+              "bottom": 557.171875
+            },
+            {
+              "value": 0,
+              "top": 572.03125,
+              "bottom": 581.46875
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 68,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 592.453125,
+              "bottom": 601.890625
+            },
+            {
+              "value": 20,
+              "top": 616.734375,
+              "bottom": 626.171875
+            },
+            {
+              "value": 15,
+              "top": 641.03125,
+              "bottom": 650.46875
+            }
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "theme": "light",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 319.1875,
+              "bottom": 328.625
+            },
+            {
+              "value": 50,
+              "top": 349.546875,
+              "bottom": 358.984375
+            },
+            {
+              "value": 0,
+              "top": 379.90625,
+              "bottom": 389.34375
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 405.1875,
+              "bottom": 414.625
+            },
+            {
+              "value": 1.5,
+              "top": 435.546875,
+              "bottom": 444.984375
+            },
+            {
+              "value": 0,
+              "top": 465.90625,
+              "bottom": 475.34375
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 491.1875,
+              "bottom": 500.625
+            },
+            {
+              "value": 30,
+              "top": 521.546875,
+              "bottom": 530.984375
+            },
+            {
+              "value": 0,
+              "top": 551.90625,
+              "bottom": 561.34375
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 577.1875,
+              "bottom": 586.625
+            },
+            {
+              "value": 5.5,
+              "top": 607.546875,
+              "bottom": 616.984375
+            },
+            {
+              "value": 0,
+              "top": 637.90625,
+              "bottom": 647.34375
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 663.1875,
+              "bottom": 672.625
+            },
+            {
+              "value": 20,
+              "top": 693.546875,
+              "bottom": 702.984375
+            },
+            {
+              "value": 15,
+              "top": 723.90625,
+              "bottom": 733.34375
+            }
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "theme": "dark",
+      "plots": [
+        {
+          "metric": "prob",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 100,
+              "top": 319.1875,
+              "bottom": 328.625
+            },
+            {
+              "value": 50,
+              "top": 349.546875,
+              "bottom": 358.984375
+            },
+            {
+              "value": 0,
+              "top": 379.90625,
+              "bottom": 389.34375
+            }
+          ]
+        },
+        {
+          "metric": "amount",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 3,
+              "top": 405.1875,
+              "bottom": 414.625
+            },
+            {
+              "value": 1.5,
+              "top": 435.546875,
+              "bottom": 444.984375
+            },
+            {
+              "value": 0,
+              "top": 465.90625,
+              "bottom": 475.34375
+            }
+          ]
+        },
+        {
+          "metric": "sun",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 60,
+              "top": 491.1875,
+              "bottom": 500.625
+            },
+            {
+              "value": 30,
+              "top": 521.546875,
+              "bottom": 530.984375
+            },
+            {
+              "value": 0,
+              "top": 551.90625,
+              "bottom": 561.34375
+            }
+          ]
+        },
+        {
+          "metric": "uv",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 11,
+              "top": 577.1875,
+              "bottom": 586.625
+            },
+            {
+              "value": 5.5,
+              "top": 607.546875,
+              "bottom": 616.984375
+            },
+            {
+              "value": 0,
+              "top": 637.90625,
+              "bottom": 647.34375
+            }
+          ]
+        },
+        {
+          "metric": "temp",
+          "height": 85,
+          "ticks": [
+            {
+              "value": 25,
+              "top": 663.1875,
+              "bottom": 672.625
+            },
+            {
+              "value": 20,
+              "top": 693.546875,
+              "bottom": 702.984375
+            },
+            {
+              "value": 15,
+              "top": 723.90625,
+              "bottom": 733.34375
+            }
+          ]
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "weather": "mock"
+}

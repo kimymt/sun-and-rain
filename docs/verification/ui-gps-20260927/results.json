@@ -1,0 +1,37 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "pass": true,
+      "checks": [
+        "compact header",
+        "footer status",
+        "manual refresh 60 minutes across reload/tab",
+        "3599/3601 second boundary",
+        "five nearby candidates",
+        "selection and restore",
+        "GPS denial/search recovery",
+        "cancel discards late GPS",
+        "200% CSS text"
+      ]
+    },
+    {
+      "width": 390,
+      "pass": true,
+      "checks": [
+        "compact header",
+        "footer status",
+        "manual refresh 60 minutes across reload/tab",
+        "3599/3601 second boundary",
+        "five nearby candidates",
+        "selection and restore",
+        "GPS denial/search recovery",
+        "cancel discards late GPS",
+        "200% CSS text"
+      ]
+    }
+  ],
+  "errors": [],
+  "weatherAPI": "mock",
+  "GPS": "simulated Tokyo station"
+}

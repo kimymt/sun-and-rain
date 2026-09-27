@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f6f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131b18" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>雨と日差しの予報</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <h1 class="brand">雨と日差しの予報</h1>
+    </header>
+    <dialog id="location-dialog" aria-labelledby="location-title">
+      <h2 id="location-title">予報の地点</h2>
+      <p>現在地周辺の市区町村を選ぶか、地名で検索できます。</p>
+      <button id="nearby-location" type="button">現在地周辺の候補を表示</button>
+      <p class="location-note">位置情報はこの操作時だけ取得し、候補は端末内で検索します。地点を確定すると、その代表座標を天気APIへ送信します。</p>
+      <form id="location-search"><label for="location-query">地名</label><div class="search-controls"><input id="location-query" placeholder="例：札幌市、Sapporo" type="search" minlength="2" maxlength="80" required autocomplete="off"><button type="submit">検索</button></div></form>
+      <p id="search-status" role="status"></p><div id="location-results"></div>
+      <p id="location-preview"></p>
+      <div class="dialog-actions"><button id="cancel-location" type="button">キャンセル</button><button id="confirm-location" type="button" disabled>この地点に変更</button></div>
+      <p class="location-note">地名: <a href="https://open-meteo.com/en/docs/geocoding-api" target="_blank" rel="noopener noreferrer">Open-Meteo / GeoNames</a></p>
+      <p class="location-note">周辺候補: <a href="https://github.com/geolonia/japanese-addresses-v2" target="_blank" rel="noopener noreferrer">Geolonia住所データ</a>（デジタル庁アドレス・ベース・レジストリ由来、<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>）。市区町村名・代表点を抽出。元データ更新: 2024年12月。新しい地名がない場合は地名検索を使ってください。</p>
+    </dialog>
+    <main><p id="connection-status" class="stale-notice" role="status" hidden></p><noscript>予報の表示にはJavaScriptを有効にしてください。</noscript>
+      <section class="heading" aria-label="地点と予報の更新">
+        <div class="location-controls"><strong id="location-name">東京</strong><button id="edit-location" type="button">地点を変更</button></div>
+        <div class="refresh-controls"><button id="refresh" type="button">予報を更新</button></div>
+        <p id="location-notice" class="location-note" role="status"></p>
+      </section>
+      <div class="workspace">
+        <div class="overview">
+          <section class="change-box forecast-changes" aria-labelledby="changes-heading">
+            <div class="change-heading"><h2 id="changes-heading">前回からの変化</h2><span id="comparison-time"></span></div>
+            <p id="change-summary"></p>
+            <details id="all-changes" hidden><summary>変更の内訳</summary><div id="change-list"></div></details>
+          </section>
+          <section class="forecast" aria-labelledby="forecast-heading">
+            <div class="section-heading"><h2 id="forecast-heading">次の12時間</h2><span id="freshness"></span></div>
+            <p id="stale-notice" class="stale-notice" hidden></p>
+            <div class="timeline" id="timeline">
+              <div class="axis"><span class="axis-label">時刻</span><div id="ticks" class="ticks"></div></div>
+              <div id="tracks"></div>
+            </div>
+            <div class="timeline-help"><span><i class="changed-key"></i>前回から変更</span><span><i class="night-key"></i>正時が夜間</span><span><i class="missing-key"></i>欠損</span><span>触れて時間を選択</span></div>
+          </section>
+        </div>
+        <aside class="detail-column">
+          <section class="detail-card" aria-labelledby="selected-heading">
+            <div class="detail-heading"><div><p class="eyebrow">選択した時間</p><h2 id="selected-heading"></h2></div><div class="step-buttons"><button id="previous" aria-label="前の時間">←</button><button id="next" aria-label="次の時間">→</button></div></div>
+            <label class="sr-only" for="hour-selector">表示する時間帯</label>
+            <input id="hour-selector" type="range" min="0" max="12" value="6" aria-describedby="range-help">
+            <p id="range-help" class="sr-only">左右の矢印キー、または前の時間と次の時間ボタンで選択できます。</p>
+            <div id="selection-content" aria-live="polite" aria-atomic="true"></div>
+          </section>
+          <details class="explainer"><summary>数値の読み方</summary><div>
+            <p><strong>日照</strong>は1時間のうち日差しが期待される長さです。バーの高さが分数を表し、晴れる順序や洗濯物の乾燥時間は表しません。</p>
+            <p>背景色は正時の昼夜区分です。日の出・日没の正確な分を表すものではありません。気温の縦軸は表示範囲に応じて変わります。</p><p><strong>UV</strong>は1時間平均。気温は正時の値です。どちらも予報で、観測値ではありません。</p>
+            <p><strong>降水確率</strong>は3時間の元予報を1時間間隔に補間した参考値です。雨の開始時刻を1時間単位で確定する値ではありません。降水量とは異なるモデルのため、両者は必ずしも一致しません。</p>
+            <p class="rain-explanation"><strong>降水量</strong>は、1時間に降る雨や雪の予想量です。1mmは、1㎡あたり1リットルの水が降る量に相当します。雪は溶かした水の量に換算します。降水確率が「降る可能性」を示すのに対し、降水量は「降る水の量」を示します。</p>
+            <p>最初と最後は時間区間の一部です。値はその1時間全体の予報であり、残り時間への比例配分はしていません。</p>
+            <p>前回画面に表示した12時間と重なる未来の時間帯だけを比較します。進行中の時間帯、欠損、取得に失敗した項目は強調しません。降り始めは降水量0.2mm/時以上になる時間帯の見込みで、確率からは推定しません。</p>
+          </div></details>
+        </aside>
+      </div>
+      <details class="explainer" id="install-guide"><summary>ホーム画面に追加・アプリの状態</summary>
+        <p id="pwa-status" role="status">オフライン起動を準備しています。</p>
+        <p id="pwa-update" hidden>新しい版を準備しました。このアプリのタブとホーム画面のアプリをすべて閉じて開き直すと更新されます。保存した地点と予報は引き継ぎます。</p>
+        <p>iPhoneではSafariの共有メニューから「ホーム画面に追加」を選びます。項目が表示されない場合はメニューを下へスクロールしてください。Androidではブラウザのメニューからインストールできます。</p>
+        <p>初回は通信が必要です。準備完了後は保存予報をオフラインで開けます。予報が未保存・期限切れの場合は通信して取得してください。ブラウザのデータ削除で保存内容が失われることがあります。</p>
+      </details>
+          <details id="fetch-details" class="acquisition-details">
+            <summary>取得・保存の状況</summary>
+            <p id="request-status" role="status">取得を開始します。</p>
+            <div id="source-status"></div>
+            <p id="storage-status" role="status">保存予報を確認しています。</p>
+          </details>
+      <footer><span>予報は端末内に保存。日照は分へ換算し、表示値を丸めています。</span><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weather data by Open-Meteo.com</a><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a><a href="https://github.com/kimymt/sun-and-rain" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
+    </main>
+  </div>
+</body>
+</html>

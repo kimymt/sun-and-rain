@@ -1,0 +1,54 @@
+- banner:
+  - link "Sun and Rain ホーム":
+    - /url: index.html
+    - text: Sun & Rain
+  - text: 架空の予報 / UI試作
+- main:
+  - region "東京の、これから。":
+    - paragraph: TOKYO, JAPAN
+    - heading "東京の、これから。" [level=1]
+    - paragraph: 9月27日（日） 10:35 → 22:35
+    - text: 表示例
+    - combobox "表示例":
+      - option "午後から雨" [selected]
+      - option "日照が続く"
+      - option "夜から朝"
+      - option "一部データなし"
+      - option "古い保存予報"
+  - region "前回からの変化":
+    - heading "前回からの変化" [level=2]
+    - text: 前回 09:10表示
+    - paragraph:
+      - strong: 16–18時の降水確率が上昇
+    - paragraph: 16–17時：20% → 60% · 日照見込みも減少
+    - group: 変更の内訳
+  - region "次の12時間":
+    - heading "次の12時間" [level=2]
+    - text: 10:30取得 時刻 今 12時 14時 16時 18時 20時 22:35 雨 確率 % 100% 降水量 mm / 時 3 日照 分 / 時 60 UV 1時間平均 11 気温 ℃・正時 30° 前回から変更 夜間 欠損 触れて時間を選択
+  - complementary:
+    - region "16–17時":
+      - paragraph: 選択した時間
+      - heading "16–17時" [level=2]
+      - button "前の時間": ←
+      - button "次の時間": →
+      - text: 表示する時間帯
+      - slider "表示する時間帯": "6"
+      - paragraph: 左右の矢印キー、または前の時間と次の時間ボタンで選択できます。
+      - paragraph:
+        - text: 16時の予報：雨
+        - strong: 24℃
+      - term: 降水確率
+      - definition: 60% 前回 20% → 今回 60%
+      - term: 降水量 / 1時間
+      - definition: 0.8mm 前回 0mm → 今回 0.8mm
+      - term: 日照見込み / 1時間
+      - definition: 5分 前回 45分 → 今回 5分
+      - term: UV / 1時間平均
+      - definition: "1"
+      - paragraph: 16時の湿度 82% · 風速 2.6 m/s
+      - paragraph: 降水・日照・UVはこの1時間の値です。
+    - group: 数値の読み方
+  - group: 時間別の数値を一覧で見る
+  - text: 画面確認用の架空データ。実際の天気には使えません。
+  - link "採用予定の気象データ：Open-Meteo ↗":
+    - /url: https://open-meteo.com/en/docs

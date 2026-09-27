@@ -1,0 +1,112 @@
+{
+  "url": "https://sun-and-rain.kei1127miyamoto.workers.dev/",
+  "checkedAt": "2026-09-27T09:54:41.802Z",
+  "assets": [
+    {
+      "file": "app.mjs",
+      "status": 200,
+      "sha256": "add72dd000d5ba69e426711f9eab0562a03dc79aa8fc544b04d87d3702fbf8a4"
+    },
+    {
+      "file": "apple-touch-icon.png",
+      "status": 200,
+      "sha256": "dc7620322deaeb7db9e326807e58dfd4e464bb0c0ced8e1a45fa92aa1b09eb4c"
+    },
+    {
+      "file": "comparison.mjs",
+      "status": 200,
+      "sha256": "667e78e40590d2051029087f51021b429b28ccd481681615e6203532001a0189"
+    },
+    {
+      "file": "icon-192.png",
+      "status": 200,
+      "sha256": "75cb3fcbfc25d5a39c6968da99785f951b887a2e2488c0122eb7c0f7fe7be913"
+    },
+    {
+      "file": "icon-512.png",
+      "status": 200,
+      "sha256": "3dd539b9c77f0fa131c91f1bac00405667c76b5bae4b866c5074d49db22a7cd0"
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "sha256": "63ff3f2d813b3910fe3f2a30d896a2f581626c41866898a0508ba2b8a8b90f1b"
+    },
+    {
+      "file": "location.mjs",
+      "status": 200,
+      "sha256": "a6f76f63e551f03bd5b14a07fe3bda07c6c51e0b024f2a1b59c36a7f0478ecca"
+    },
+    {
+      "file": "manifest.webmanifest",
+      "status": 200,
+      "sha256": "18fd2ace66d6628c0c7f079e9b20c00edecef574fdf0bb16d848aaa2b59f33b6"
+    },
+    {
+      "file": "pwa.mjs",
+      "status": 200,
+      "sha256": "410b56ac589b51943585485699d907877481acf2661c5c67e33c9aaba07e9132"
+    },
+    {
+      "file": "storage.mjs",
+      "status": 200,
+      "sha256": "d05e028d78c3fa431cbd7e1188c002e580bcb2958228a9bea931ae1f4334e800"
+    },
+    {
+      "file": "style.css",
+      "status": 200,
+      "sha256": "cb75aca5a6881338b2b7e71d1e88db3365bdab78a22bacb7a6b9124429e875df"
+    },
+    {
+      "file": "sw.js",
+      "status": 200,
+      "sha256": "cf8610ab89ab9125639690753d71a999b5e637e75c05d65e8dd2e2a267e7581b"
+    },
+    {
+      "file": "weather.mjs",
+      "status": 200,
+      "sha256": "2f0e5883ea6ff84de92f398a0a74c783f59782849a5976babca0fc1737ba0cef"
+    }
+  ],
+  "errors": [],
+  "violations": [],
+  "network": [
+    {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=35.6812&longitude=139.7671&models=best_match&hourly=temperature_2m%2Cprecipitation%2Csunshine_duration%2Cshortwave_radiation%2Crelative_humidity_2m%2Cwind_speed_10m%2Cis_day%2Cweather_code&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo&temperature_unit=celsius&wind_speed_unit=ms&precipitation_unit=mm",
+      "status": 200
+    },
+    {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=35.6812&longitude=139.7671&models=gfs_global&hourly=uv_index%2Cprecipitation_probability&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo&temperature_unit=celsius&wind_speed_unit=ms&precipitation_unit=mm",
+      "status": 200
+    },
+    {
+      "url": "https://geocoding-api.open-meteo.com/v1/search?name=%E6%9C%AD%E5%B9%8C%E5%B8%82&count=10&language=ja&countryCode=JP&format=json",
+      "status": 200
+    }
+  ],
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public, max-age=0, must-revalidate",
+    "cf-cache-status": "HIT",
+    "cf-ray": "a419a1147acf0eee-NRT",
+    "content-encoding": "zstd",
+    "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://api.open-meteo.com https://geocoding-api.open-meteo.com; img-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+    "content-type": "text/html",
+    "date": "Sun, 27 Sep 2026 09:54:49 GMT",
+    "etag": "W/\"9768fd039e5b2a1a75b9315a10ac1cec\"",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "permissions-policy": "camera=(), microphone=(), geolocation=()",
+    "referrer-policy": "no-referrer",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=TIrIOhkPDe6i2GQ8TTJX%2B8R4WZGtjLy%2FFmqNtIkRUP0dXy%2FfPFzVQBKqDQS2j3%2BKMQrvZWz9EJUm9lG3nhEdEt00DwwwdoBET5sfix1iJ0duJ7zKMXOrv6tcL9kOXS75vm3yxs50VTRKRCY%2BeqNmpdwRkOxnF%2BFIkZHFvPMlYOZaVDF3lZEP\"}]}",
+    "server": "cloudflare",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-robots-tag": "noindex"
+  },
+  "online": "予報を取得しました。",
+  "offline": "最新予報を取得できませんでした。保存した予報を表示しています。",
+  "caches": [
+    "sun-and-rain-shell-2991061aa8904739"
+  ],
+  "pass": true
+}

@@ -1,0 +1,32 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "status": "PASS",
+      "checks": [
+        "search failure",
+        "cancel",
+        "selection",
+        "late old response ignored",
+        "comparison reset",
+        "saved location restored",
+        "no overflow"
+      ]
+    },
+    {
+      "width": 390,
+      "status": "PASS",
+      "checks": [
+        "search failure",
+        "cancel",
+        "selection",
+        "late old response ignored",
+        "comparison reset",
+        "saved location restored",
+        "no overflow"
+      ]
+    }
+  ],
+  "errors": [],
+  "mockedAPI": true
+}

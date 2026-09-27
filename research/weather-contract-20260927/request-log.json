@@ -1,0 +1,80 @@
+[
+  {
+    "name": "tokyo",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=35.68&longitude=139.76&hourly=uv_index,precipitation_probability&models=gfs_global&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "sapporo",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=43.06&longitude=141.35&hourly=uv_index,precipitation_probability&models=gfs_global&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "naha",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=26.21&longitude=127.68&hourly=uv_index,precipitation_probability&models=gfs_global&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "chichijima",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=27.09&longitude=142.19&hourly=uv_index,precipitation_probability&models=gfs_global&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "matsumoto",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=36.24&longitude=137.97&hourly=uv_index,precipitation_probability&models=gfs_global&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "tokyo",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=35.68&longitude=139.76&hourly=uv_index,precipitation_probability&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "sapporo",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=43.06&longitude=141.35&hourly=uv_index,precipitation_probability&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "naha",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=26.21&longitude=127.68&hourly=uv_index,precipitation_probability&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "chichijima",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=27.09&longitude=142.19&hourly=uv_index,precipitation_probability&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "matsumoto",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=36.24&longitude=137.97&hourly=uv_index,precipitation_probability&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "kamikochi",
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=36.25&longitude=137.64&hourly=uv_index,precipitation_probability&models=gfs_global&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "tokyo-cams",
+    "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=35.68&longitude=139.76&hourly=uv_index&domains=cams_global&forecast_hours=24&timeformat=unixtime&timezone=Asia%2FTokyo",
+    "httpStatus": 200,
+    "exitCode": 0
+  },
+  {
+    "name": "noaa-uv-source-index",
+    "url": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20260927/00/atmos/gfs.t00z.sfluxgrbf012.grib2.idx",
+    "httpStatus": 200,
+    "exitCode": 0
+  }
+]

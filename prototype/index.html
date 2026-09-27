@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f6f0">
+  <title>Sun & Rain — 次の12時間</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <a class="brand" href="index.html" aria-label="Sun and Rain ホーム"><span class="brand-mark" aria-hidden="true">S<span>/</span>R</span><span>Sun & Rain</span></a>
+      <span class="demo-label">架空の予報 / UI試作</span>
+    </header>
+    <main>
+      <section class="heading" aria-labelledby="page-title">
+        <div><p class="eyebrow">TOKYO, JAPAN</p><h1 id="page-title">東京の、これから。</h1><p id="period" class="period"></p></div>
+        <div class="scenario"><label for="scenario">表示例</label><select id="scenario"><option value="rain">午後から雨</option><option value="sun">日照が続く</option><option value="night">夜から朝</option><option value="missing">一部データなし</option><option value="stale">古い保存予報</option></select></div>
+      </section>
+      <div class="workspace">
+        <div class="overview">
+          <section class="change-box" aria-labelledby="changes-heading">
+            <div class="change-heading"><h2 id="changes-heading">前回からの変化</h2><span id="comparison-time"></span></div>
+            <div id="change-summary"></div>
+            <details id="all-changes"><summary>変更の内訳</summary><div id="change-list"></div></details>
+          </section>
+          <section class="forecast" aria-labelledby="forecast-heading">
+            <div class="section-heading"><h2 id="forecast-heading">次の12時間</h2><span id="freshness"></span></div>
+            <p id="stale-notice" class="stale-notice" hidden>取得から7時間経過した保存予報です。最新の状況を反映していない可能性があります。</p>
+            <div class="timeline" id="timeline">
+              <div class="axis"><span class="axis-label">時刻</span><div id="ticks" class="ticks"></div></div>
+              <div id="tracks"></div>
+            </div>
+            <div class="timeline-help"><span><i class="changed-key"></i>前回から変更</span><span><i class="night-key"></i>夜間</span><span><i class="missing-key"></i>欠損</span><span>触れて時間を選択</span></div>
+          </section>
+        </div>
+        <aside class="detail-column">
+          <section class="detail-card" aria-labelledby="selected-heading">
+            <div class="detail-heading"><div><p class="eyebrow">選択した時間</p><h2 id="selected-heading"></h2></div><div class="step-buttons"><button id="previous" aria-label="前の時間">←</button><button id="next" aria-label="次の時間">→</button></div></div>
+            <label class="sr-only" for="hour-selector">表示する時間帯</label>
+            <input id="hour-selector" type="range" min="0" max="12" value="6" aria-describedby="range-help">
+            <p id="range-help" class="sr-only">左右の矢印キー、または前の時間と次の時間ボタンで選択できます。</p>
+            <div id="selection-content" aria-live="polite" aria-atomic="true"></div>
+          </section>
+          <details class="explainer"><summary>数値の読み方</summary><div>
+            <p><strong>日照</strong>は1時間のうち日差しが期待される長さです。バーの高さが分数を表し、晴れる順序や洗濯物の乾燥時間は表しません。</p>
+            <p><strong>UV</strong>は1時間平均。気温は正時の値です。どちらも予報で、観測値ではありません。</p>
+            <p><strong>降水確率</strong>は3時間の元予報を1時間間隔に補間した参考値です。雨の開始時刻を1時間単位で確定する値ではありません。</p>
+            <p><strong>降水量</strong>は雨・雪を含む1時間の合計。確率と異なるモデルのため、両者は必ずしも一致しません。</p>
+            <p>最初と最後は時間区間の一部です。値はその1時間全体の予報であり、残り時間への比例配分はしていません。</p>
+          </div></details>
+        </aside>
+      </div>
+      <details class="hourly-list"><summary>時間別の数値を一覧で見る</summary><div id="accessible-list"></div></details>
+      <footer><span>画面確認用の架空データ。実際の天気には使えません。</span><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">採用予定の気象データ：Open-Meteo ↗</a></footer>
+    </main>
+  </div>
+</body>
+</html>

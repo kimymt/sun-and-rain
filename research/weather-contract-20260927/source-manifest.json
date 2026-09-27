@@ -1,0 +1,145 @@
+{
+  "commit": "cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c",
+  "files": [
+    {
+      "localName": "CamsDomain.swift",
+      "upstreamPath": "Sources/App/Cams/CamsDomain.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Cams/CamsDomain.swift",
+      "sha256": "e307978ecf62d6248068cae3dd09290f544189e274feb94e5f36d910129a8c80",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "CamsDownload.swift",
+      "upstreamPath": "Sources/App/Cams/CamsDownload.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Cams/CamsDownload.swift",
+      "sha256": "4d1164b221ecd30b5ef00b16519e7755ed50cb1d036d518d88152dd8f1d07f9e",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "DerivedMapping.swift",
+      "upstreamPath": "Sources/App/Helper/Reader/DerivedMapping.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/DerivedMapping.swift",
+      "sha256": "793a4aa3eed7caa28461b057850587388cb3d13b2aca7fa3571f772fda93f573",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "ForecastapiController.swift",
+      "upstreamPath": "Sources/App/Controllers/ForecastapiController.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Controllers/ForecastapiController.swift",
+      "sha256": "99307b150d2a9efea2cd2fa9ef2703f049cc4e7b864c1eb73b0c6597fa9d128b",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "ForecastapiQuery.swift",
+      "upstreamPath": "Sources/App/Helper/ForecastapiQuery.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/ForecastapiQuery.swift",
+      "sha256": "23e437a3a069f6ae94261e126168436e2515488ae739512c9e20b812e6749c08",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GenericDomain.swift",
+      "upstreamPath": "Sources/App/Helper/Reader/GenericDomain.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericDomain.swift",
+      "sha256": "35c19518b824283defb42605510fa33d1dd7c6f3e8b5a541a310d5b0bffec080",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GenericReader.swift",
+      "upstreamPath": "Sources/App/Helper/Reader/GenericReader.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReader.swift",
+      "sha256": "987826926a2767a41063a77f0e2c7a525a42e6d70b7947f0c036f8aea46cb8e5",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GenericReaderDerived.swift",
+      "upstreamPath": "Sources/App/Helper/Reader/GenericReaderDerived.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReaderDerived.swift",
+      "sha256": "deb114d6c147f1c2e7ca39541cf4441e1d790f06534faddaf68185eb373788da",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GenericReaderMixerRaw.swift",
+      "upstreamPath": "Sources/App/Helper/Reader/GenericReaderMixerRaw.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReaderMixerRaw.swift",
+      "sha256": "ea33ff313b46e7300b7501f57814f19aadfe8a1a3b55c506acc4785d5e5c1e21",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GenericReaderMulti.swift",
+      "upstreamPath": "Sources/App/Helper/Reader/GenericReaderMulti.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReaderMulti.swift",
+      "sha256": "8fb88c5ae382d400954310f134fc4ab52589e4ee827dd0ef08a611bf81e263dd",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GenericVariableHandle.swift",
+      "upstreamPath": "Sources/App/Helper/Writer/GenericVariableHandle.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Writer/GenericVariableHandle.swift",
+      "sha256": "a20f1d77b5cffdfe7fcf1333a99d1fc12344790270d1eebc919bdcc3ce56480e",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GfsDomain.swift",
+      "upstreamPath": "Sources/App/Gfs/GfsDomain.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsDomain.swift",
+      "sha256": "89a20f743f91849d7d8627d7868b44ec1a4bddd02b8ab4ef41a17f0f27d7ed71",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GfsDownload.swift",
+      "upstreamPath": "Sources/App/Gfs/GfsDownload.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsDownload.swift",
+      "sha256": "24a2ae0f6c87247284fd286797cf1fe8eee45aec756004caac142842dc4c5207",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GfsVariable.swift",
+      "upstreamPath": "Sources/App/Gfs/GfsVariable.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsVariable.swift",
+      "sha256": "81bdffd0e41abbab3534328bc6658126882cac939453ef3f8e157c40b4189f3f",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "GfsVariableDownloadable.swift",
+      "upstreamPath": "Sources/App/Gfs/GfsVariableDownloadable.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsVariableDownloadable.swift",
+      "sha256": "176e1fe5d30acb5d31ad9f538f72bae10a04bef45aa6a4167e2d7983a223fb27",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "Interpolation.swift",
+      "upstreamPath": "Sources/App/Helper/Interpolation.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Interpolation.swift",
+      "sha256": "b0ae77a1949d9f21887a64718b67de070091912815884866ca554f119086a0da",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "LICENSE",
+      "upstreamPath": "LICENSE",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/LICENSE",
+      "sha256": "20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "PrecipitationProbability.swift",
+      "upstreamPath": "Sources/App/Gfs/PrecipitationProbability.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/PrecipitationProbability.swift",
+      "sha256": "d25ec4f0d3a25653be6e99a7ed1dc4f22a0d16bed41ac0e438245e6070d760a5",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "VariableHourly.swift",
+      "upstreamPath": "Sources/App/Controllers/VariableHourly.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Controllers/VariableHourly.swift",
+      "sha256": "fd5187ddf45428db457c3bbfe0561bb19f9ade5b4af1d36a6c854550da2ff046",
+      "archiveContentMatch": true
+    },
+    {
+      "localName": "VariableHourlyDeriverHighLevel.swift",
+      "upstreamPath": "Sources/App/Helper/Reader/VariableHourlyDeriverHighLevel.swift",
+      "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/VariableHourlyDeriverHighLevel.swift",
+      "sha256": "2a5c8c8f921813d977ed970969e964d48d51e1a2d384d905c2f4262f4a450db8",
+      "archiveContentMatch": true
+    }
+  ]
+}

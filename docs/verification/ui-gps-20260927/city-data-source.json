@@ -1,0 +1,9 @@
+{
+  "source": "https://japanese-addresses-v2.geoloniamaps.com/api/ja.json",
+  "attribution": "デジタル庁アドレス・ベース・レジストリをもとに株式会社Geoloniaが作成。Sun & Rainで市区町村名・代表点を抽出。",
+  "license": "CC BY 4.0",
+  "upstreamUpdated": 1735102668,
+  "retrieved": "2026-09-27",
+  "sourceSHA256": "9a642d741607d9ce7b6624a1d2d0a499d810de4fe702410acddb0e4e94ef0a7b",
+  "count": 1898
+}

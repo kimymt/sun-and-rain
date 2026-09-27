@@ -1,0 +1,16 @@
+{
+  "browser": "153.0.8010.12",
+  "checks": [
+    "first install, complete shell and manifest",
+    "browser offline reload and closed-page restart with saved forecast",
+    "mixed deployment rejected; old release still starts offline",
+    "complete update waits without replacing open document",
+    "close/reopen adopts new shell; forecast survives; old shell removed; no API cache",
+    "prepared shell without saved forecast shows missing values, not zeros",
+    "first-ever offline visit cannot install or fabricate a forecast"
+  ],
+  "errors": [],
+  "networkOffline": "BrowserContext.setOffline",
+  "forecastAPI": "mocked",
+  "updateServer": "test server with changed HTML, hashes and worker"
+}

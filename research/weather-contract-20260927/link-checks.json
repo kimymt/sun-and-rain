@@ -1,0 +1,122 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Cams/CamsDomain.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Cams/CamsDownload.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/DerivedMapping.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Controllers/ForecastapiController.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/ForecastapiQuery.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericDomain.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReader.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReaderDerived.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReaderMixerRaw.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/GenericReaderMulti.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Writer/GenericVariableHandle.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsDomain.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsDownload.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsVariable.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/GfsVariableDownloadable.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Interpolation.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/LICENSE",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Gfs/PrecipitationProbability.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Controllers/VariableHourly.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://raw.githubusercontent.com/open-meteo/open-meteo/cc3f4e5e956b39a56ab182faeccfd3d936ae6b4c/Sources/App/Helper/Reader/VariableHourlyDeriverHighLevel.swift",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://open-meteo.com/en/docs",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://open-meteo.com/en/docs/gfs-api",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://open-meteo.com/en/docs/air-quality-api",
+    "status": "200",
+    "exitCode": 0
+  },
+  {
+    "url": "https://open-meteo.com/en/docs/model-updates",
+    "status": "200",
+    "exitCode": 0
+  }
+]

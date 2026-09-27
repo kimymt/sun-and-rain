@@ -1,0 +1,32 @@
+import { createRequire } from 'node:module';
+import { writeFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { createServer } from '../scripts/serve.mjs';
+const { chromium } = createRequire(import.meta.url)(process.argv[2]);
+const server = createServer(); let browser;
+try {
+  await new Promise(r => server.listen(0, '127.0.0.1', r));
+  browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const network = [], errors = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('response', r => { if (r.url().includes('api.open-meteo.com')) network.push({ url: r.url(), status: r.status() }); });
+  await page.goto(`http://127.0.0.1:${server.address().port}`);
+  await page.waitForFunction(() => !document.querySelector('#refresh').disabled);
+  await page.getByRole('button', { name: '地点を変更', exact: true }).click();
+  await page.getByLabel('地名', { exact: true }).fill('札幌市');
+  await page.getByRole('button', { name: '検索', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('#search-status').textContent !== '検索しています。');
+  await writeFile('docs/verification/location-20260927/live-search-status.json', JSON.stringify({ status: await page.locator('#search-status').textContent(), network, errors }, null, 2));
+  await page.locator('.location-candidate').first().click({ timeout: 2000 });
+  const candidate = await page.locator('#location-preview').textContent();
+  await page.getByRole('button', { name: 'この地点に変更', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('#location-name').textContent !== '東京' && !document.querySelector('#refresh').disabled);
+  await page.waitForFunction(() => document.querySelector('#storage-status').textContent === '端末に保存済み');
+  const status = await page.locator('#request-status').textContent();
+  assert.equal(status, '予報を取得しました。'); assert.deepEqual(errors, []);
+  assert(network.some(r => r.url.includes('geocoding-api') && r.status === 200));
+  await page.screenshot({ path: 'docs/verification/location-20260927/live-390.png', fullPage: true });
+  await writeFile('docs/verification/location-20260927/live-results.json', JSON.stringify({ candidate, status, network, errors }, null, 2));
+  console.log('PASS: real geocoding, selected forecast and IndexedDB save');
+} finally { await browser?.close(); await new Promise(r => server.close(r)); }

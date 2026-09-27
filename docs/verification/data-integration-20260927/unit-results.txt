@@ -1,0 +1,25 @@
+✔ API requests explicitly fix models, units and UTC epoch output (0.555833ms)
+✔ interval-ending API time maps to preceding hour, without timezone offset addition (0.534208ms)
+✔ 12-hour window joins instant and interval values by absolute timestamp (0.8075ms)
+✔ JST midnight does not reset joins or duplicate timestamps (0.210542ms)
+✔ missing and invalid values remain null, legitimate zeros remain zero (0.1555ms)
+✔ reject malformed source: wrong units (0.117ms)
+✔ reject malformed source: short array (0.041208ms)
+✔ reject malformed source: missing field (0.049167ms)
+✔ reject malformed source: duplicate timestamp (0.055166ms)
+✔ reject malformed source: gap (0.067375ms)
+✔ reject malformed source: wrong time unit (0.043625ms)
+✔ reject malformed source: no coverage (0.050125ms)
+✔ different location revision or source policy cannot be mixed into window (0.160459ms)
+✔ partial failure preserves original source age and never substitutes other model (0.350167ms)
+✔ first total failure has no fabricated forecast; later retry recovers (0.44725ms)
+✔ deadline aborts hung fetch and produces recoverable error (10.858125ms)
+✔ unknown weather code is not guessed from sunshine or rain (0.060084ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 56.843291

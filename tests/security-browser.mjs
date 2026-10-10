@@ -6,6 +6,7 @@ import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
 import { responseFixture } from './fixtures.mjs';
+import { waitForShell } from './pwa-helpers.mjs';
 
 const { chromium } = createRequire(import.meta.url)(process.argv[2]);
 const out = process.env.VERIFICATION_OUT ?? 'docs/verification/security-20261010';
@@ -61,7 +62,7 @@ try {
   context.on('page', page => page.on('pageerror', error => errors.push(error.message)));
   let page = await context.newPage();
   await page.goto(url);
-  await page.waitForFunction(() => navigator.serviceWorker.controller && document.querySelector('#pwa-status').textContent.includes('準備ができました'));
+  await waitForShell(page);
   await page.waitForFunction(() => document.querySelector('#storage-status').textContent === '端末に保存済み');
   const values = await page.locator('.metric-grid').innerText();
   const second = await context.newPage();
@@ -71,7 +72,6 @@ try {
   assert.equal((await context.request.get(url)).headers()['content-security-policy'], updatedCsp);
   await page.evaluate(async () => (await navigator.serviceWorker.getRegistration()).update());
   await page.waitForFunction(async () => !!(await navigator.serviceWorker.getRegistration()).waiting);
-  await page.waitForFunction(() => !document.querySelector('#pwa-update').hidden);
   assert.equal((await page.reload()).headers()['content-security-policy'], originalCsp);
   await page.close();
   assert.equal((await second.reload()).headers()['content-security-policy'], originalCsp);

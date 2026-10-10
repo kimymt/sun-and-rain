@@ -6,5 +6,9 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(self)
   X-Robots-Tag: noindex
 
+# The service worker verifies the root HTML byte-for-byte; prevent CDN injection.
+/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
 /sw.js
   Cache-Control: no-cache

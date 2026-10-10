@@ -5,7 +5,7 @@ import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
 import { responseFixture } from './fixtures.mjs';
 const { chromium } = createRequire(import.meta.url)(process.argv[2]);
-const out = 'docs/verification/pwa-20260927';
+const out = process.env.VERIFICATION_OUT ?? 'docs/verification/pwa-20260927';
 await mkdir(out, { recursive: true });
 let mode = 'v1';
 const originalSW = await readFile('app/sw.js', 'utf8');
@@ -15,7 +15,9 @@ const hash = body => createHash('sha256').update(body).digest('hex');
 const v2html = Buffer.from(bodies['index.html'].toString().replace('<body>', '<body data-release="v2">'));
 const v2worker = originalSW.replace(/sun-and-rain-shell-[a-f0-9]+/, 'sun-and-rain-shell-test-v2').replace(hash(bodies['index.html']), hash(v2html));
 const server = http.createServer((req, res) => {
-  const file = new URL(req.url, 'http://localhost').pathname.slice(1) || 'index.html';
+  let file;
+  try { file = new URL(req.url, 'http://localhost').pathname.slice(1) || 'index.html'; }
+  catch { res.writeHead(400); res.end('Bad request'); return; }
   if (!bodies[file]) { res.writeHead(404); res.end(); return; }
   let body = bodies[file];
   if (mode !== 'v1') {

@@ -7,7 +7,9 @@ const {chromium}=require(process.argv[2]);
 const out=path.resolve(__dirname,'../docs/verification/ui-prototype-20260927');
 fs.mkdirSync(out,{recursive:true});
 const server=http.createServer((req,res)=>{
-  const name=new URL(req.url,'http://localhost').pathname;
+  let name;
+  try{name=new URL(req.url,'http://localhost').pathname;}
+  catch{res.writeHead(400);res.end('Bad request');return;}
   const allowed={'/':'index.html','/index.html':'index.html','/style.css':'style.css','/app.js':'app.js'};
   if(!allowed[name]){res.writeHead(404);res.end();return;}
   res.setHeader('Content-Type',name.endsWith('.css')?'text/css':name.endsWith('.js')?'text/javascript':'text/html; charset=utf-8');

@@ -107,8 +107,40 @@ test('corrupt or incompatible persisted records are not used', () => {
   const wrongSource = record(); wrongSource.last.sources.uvpop.data.sourcePolicyId = 'old';
   assert.equal(restoreRecord(wrongSource, NOW).record, null);
 });
+test('corrupt last and previous window times are rejected before comparison', () => {
+  for (const field of ['last', 'previous']) {
+    for (const time of [-1e20, 8.64e12 + 1, -8.64e12 - 1, Infinity, -Infinity, NaN]) {
+      const r = record();
+      r[field] = { ...make(), windowStart: time, windowEnd: time + 43200 };
+      assert.equal(validSnapshot(r[field], LOCATION), false);
+      assert.equal(restoreRecord(r, NOW).record, null);
+    }
+  }
+});
+test('display time must lie inside a valid twelve-hour window', () => {
+  for (const displayedAt of [NOW - .001, NOW + 43200.001, 8.64e12 + 1, Infinity, NaN]) {
+    const r = record(); r.last.displayedAt = displayedAt;
+    assert.equal(validSnapshot(r.last, LOCATION), false);
+    assert.equal(restoreRecord(r, NOW).record, null);
+  }
+  const s = make(); s.displayedAt = s.windowEnd;
+  assert.equal(validSnapshot(s, LOCATION), true);
+  const outsideDateRange = make();
+  outsideDateRange.windowStart = outsideDateRange.displayedAt = 8.64e12 - 1;
+  outsideDateRange.windowEnd = outsideDateRange.windowStart + 43200;
+  assert.equal(validSnapshot(outsideDateRange, LOCATION), false);
+});
+test('fractional snapshot times and retention boundaries remain valid', () => {
+  const s = make(NOW + .125); s.displayedAt += .025;
+  const r = { schemaVersion: 1, location: LOCATION, last: s, previous: make(NOW - .125) };
+  assert.equal(validSnapshot(s, LOCATION), true);
+  assert.deepEqual(restoreRecord(r, s.displayedAt).record, r);
+  assert.equal(restoreRecord(record(), NOW + 48 * 3600).record.last.displayedAt, NOW);
+  assert.equal(restoreRecord(record(), NOW - 300).record.last.displayedAt, NOW);
+});
 test('recent display does not renew 48-hour-old data; future clock record is rejected', () => {
   const r = record(); r.last.displayedAt = NOW + 47 * 3600;
+  r.last.windowStart = r.last.displayedAt; r.last.windowEnd = r.last.windowStart + 43200;
   assert.equal(restoreRecord(r, NOW + 49 * 3600).record.last, null);
   assert.equal(restoreRecord(record(), NOW - 301).record.last, null);
 });

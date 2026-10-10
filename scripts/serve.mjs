@@ -6,7 +6,10 @@ const app = fileURLToPath(new URL('../app/', import.meta.url));
 const allowed = new Map([['/', 'index.html'], ['/index.html', 'index.html'], ['/app.mjs', 'app.mjs'], ['/weather.mjs', 'weather.mjs'], ['/comparison.mjs', 'comparison.mjs'], ['/storage.mjs', 'storage.mjs'], ['/location.mjs', 'location.mjs'], ['/style.css', 'style.css'], ...['cities.json', 'pwa.mjs', 'sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'].map(file => ['/' + file, file])]);
 export function createServer() {
   return http.createServer(async (req, res) => {
-    const file = allowed.get(new URL(req.url, 'http://localhost').pathname);
+    let pathname;
+    try { pathname = new URL(req.url, 'http://localhost').pathname; }
+    catch { res.writeHead(400); res.end('Bad request'); return; }
+    const file = allowed.get(pathname);
     if (!file) { res.writeHead(404); res.end('Not found'); return; }
     try {
       const content = await readFile(path.join(app, file));

@@ -3,13 +3,14 @@ export const DB_NAME = 'sun-and-rain';
 export const STORE_NAME = 'locations';
 export const RETENTION_SECONDS = 48 * 3600;
 const finite = v => typeof v === 'number' && Number.isFinite(v);
+const epoch = v => finite(v) && Math.abs(v) <= 8.64e12; // Date limit, in seconds; fractions are valid.
 
 // Persisted records are input, not trusted application state.
 export function validSnapshot(value, location) {
   if (!value || value.location?.id !== location.id || value.location?.revision !== location.revision ||
     value.location.latitude !== location.latitude || value.location.longitude !== location.longitude ||
-    !finite(value.displayedAt) || !finite(value.windowStart) || value.windowEnd !== value.windowStart + 43200 ||
-    value.displayedAt < value.windowStart || !value.sources || typeof value.sources !== 'object') return false;
+    !epoch(value.displayedAt) || !epoch(value.windowStart) || !epoch(value.windowEnd) || value.windowEnd !== value.windowStart + 43200 ||
+    value.displayedAt < value.windowStart || value.displayedAt > value.windowEnd || !value.sources || typeof value.sources !== 'object') return false;
   for (const [id, spec] of Object.entries(SOURCES)) {
     const state = value.sources[id];
     if (!state) continue;

@@ -114,7 +114,8 @@ export function windowData(sources, now, location = LOCATION) {
       aggregation, values: new Map((compatible ? data.series[key] : []).map(p => [p.targetTime, p.value]))
     };
   }
-  for (let t = start; t < end; t += 3600) {
+  // A twelve-hour view spans at most thirteen hourly intervals, even with corrupt input.
+  for (let t = start; t < end && rows.length < 13; t += 3600) {
     const row = { start: t, end: t + 3600 };
     for (const [key, { aggregation, values }] of Object.entries(maps)) row[key] = values.get(aggregation === 'instant' ? t : t + 3600) ?? null;
     // Minutes are a presentation unit. The source retains seconds, unrounded.

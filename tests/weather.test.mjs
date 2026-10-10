@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { requestURL, normalize, windowData, refreshSources, fetchSource, formatTime, weatherLabel, LOCATION } from '../app/weather.mjs';
 import { NOW, responseFixture } from './fixtures.mjs';
 const states = now => Object.fromEntries(['weather', 'uvpop'].map(source => [source, { data: normalize(responseFixture(source, now), source, now), error: null }]));
@@ -35,6 +36,22 @@ test('12-hour window joins instant and interval values by absolute timestamp', (
   assert.equal(view.rows[0].sun, 30);
   assert.equal(view.rows[12].end - view.rows[0].start, 13 * 3600);
   assert.equal(windowData(input, Math.floor(NOW / 3600) * 3600).rows.length, 12);
+});
+test('fractional seconds keep the first and last partial hourly intervals', () => {
+  const now = Math.floor(NOW / 3600) * 3600 + .125;
+  const view = windowData(states(now), now);
+  assert.equal(view.rows.length, 13);
+  assert.equal(view.now, now);
+  assert.equal(view.end, now + 43200);
+  assert.equal(view.offset, .125 / 3600);
+  assert.equal(view.rows[12].start - view.rows[0].start, 12 * 3600);
+});
+test('corrupt epoch cannot make hourly window construction loop indefinitely', () => {
+  const moduleURL = new URL('../app/weather.mjs', import.meta.url).href;
+  const output = execFileSync(process.execPath, ['--input-type=module', '-e',
+    `import { windowData } from ${JSON.stringify(moduleURL)}; console.log(windowData({}, -1e20).rows.length);`
+  ], { timeout: 5000, encoding: 'utf8' });
+  assert.equal(Number(output.trim()), 13);
 });
 test('JST midnight does not reset joins or duplicate timestamps', () => {
   const now = Date.parse('2026-09-27T23:35:00+09:00') / 1000;

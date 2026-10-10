@@ -1,0 +1,12 @@
+{
+  "browser": "153.0.8010.12",
+  "viewport": "390x844",
+  "forecastAPI": "mocked",
+  "networkOffline": "BrowserContext.setOffline",
+  "checks": [
+    "header-only build changes worker; policy waits for all tabs to close, then cached HTML uses new CSP",
+    "updated policy and saved forecast survive offline reload and time selection",
+    "malformed saved comparison is rejected without freezing; retry fetches and saves a valid forecast"
+  ],
+  "errors": []
+}

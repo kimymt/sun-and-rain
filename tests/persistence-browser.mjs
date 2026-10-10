@@ -56,7 +56,7 @@ try {
   assert.equal(second.last.sources.uvpop.data.series.uv[6].value, 4);
   await page.screenshot({ path: path.join(out, 'overview-390.png'), fullPage: true });
   await page.getByText('変更の内訳', { exact: true }).click();
-  assert((await page.locator('#change-list').innerText()).includes('UV（1時間平均） 2 → 4'));
+  assert((await page.locator('#change-list').innerText()).includes('UV指数（1時間平均） 2 → 4'));
   assert((await page.locator('#change-list').innerText()).includes('降水確率 20% → 60%'));
   await page.getByRole('slider').focus(); await page.keyboard.press('Home');
   for (let i = 0; i < 5; i++) await page.keyboard.press('ArrowRight');

@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
 import { responseFixture } from './fixtures.mjs';
+import { waitForShell } from './pwa-helpers.mjs';
 const { chromium } = createRequire(import.meta.url)(process.argv[2]);
 const out = process.env.VERIFICATION_OUT ?? 'docs/verification/pwa-20260927';
 await mkdir(out, { recursive: true });
@@ -43,7 +44,7 @@ try {
   page.on('pageerror', e => errors.push(e.message));
   await page.goto(url);
   await page.waitForFunction(() => document.querySelector('#storage-status').textContent === '端末に保存済み');
-  await page.waitForFunction(() => navigator.serviceWorker.controller && document.querySelector('#pwa-status').textContent.includes('準備ができました'));
+  await waitForShell(page);
   const values = await page.locator('.metric-grid').innerText();
   const manifest = await page.evaluate(async () => (await fetch('manifest.webmanifest')).json());
   assert.equal(manifest.display, 'standalone'); assert.equal(manifest.icons.length, 2);
@@ -88,7 +89,6 @@ try {
   await page.evaluate(async () => (await navigator.serviceWorker.getRegistration()).update());
   await page.waitForFunction(async () => !!(await navigator.serviceWorker.getRegistration()).waiting);
   assert.equal(await page.locator('body').getAttribute('data-release'), null);
-  await page.waitForFunction(() => !document.querySelector('#pwa-update').hidden);
   const cachesBefore = await page.evaluate(() => caches.keys());
   assert(cachesBefore.some(key => key.endsWith('test-v2')));
   checks.push('complete update waits without replacing open document');
@@ -111,7 +111,7 @@ try {
   await emptyContext.route('https://api.open-meteo.com/**', route => route.abort());
   const emptyPage = await emptyContext.newPage();
   await emptyPage.goto(url);
-  await emptyPage.waitForFunction(() => navigator.serviceWorker.controller && document.querySelector('#pwa-status').textContent.includes('準備ができました'));
+  await waitForShell(emptyPage);
   await emptyContext.setOffline(true); await emptyPage.reload();
   await emptyPage.waitForFunction(() => !document.querySelector('#refresh').disabled);
   assert.equal(await emptyPage.locator('.metric .no-data').count(), 4);

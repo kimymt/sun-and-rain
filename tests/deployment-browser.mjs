@@ -2,6 +2,7 @@ import { createRequire } from 'node:module';
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
+import { waitForShell } from './pwa-helpers.mjs';
 const { chromium } = createRequire(import.meta.url)(process.argv[2]);
 const url = new URL(process.argv[3]);
 const out = process.env.VERIFICATION_OUT ?? 'docs/verification/deployment-20260927';
@@ -39,7 +40,7 @@ try {
   assert.equal(await page.locator('footer a', { hasText: 'GitHub' }).getAttribute('href'), 'https://github.com/kimymt/sun-and-rain');
   await page.waitForFunction(() => document.querySelector('#request-status').textContent === '予報を取得しました。');
   await page.waitForFunction(() => document.querySelector('#storage-status').textContent === '端末に保存済み');
-  await page.waitForFunction(() => document.querySelector('#pwa-status').textContent === 'オフライン起動の準備ができました。');
+  await waitForShell(page);
   assert.equal(await page.locator('#refresh-notice, .rain-explanation span, .rain-explanation br').count(), 0);
   assert((await page.locator('.rain-explanation').textContent()).includes('1㎡あたり1リットル'));
   await page.getByRole('button', { name: '地点を変更', exact: true }).click();

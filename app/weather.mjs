@@ -1,3 +1,4 @@
+import { NO_RATE_LIMIT, rateLimitFromHeaders } from './fetch-log.mjs';
 // Contract boundary: API epoch seconds are UTC; timezone conversion is UI-only.
 export const LOCATION = Object.freeze({ id: 'tokyo', revision: 1, name: '東京', latitude: 35.6812, longitude: 139.7671 });
 export const SOURCES = Object.freeze({
@@ -78,18 +79,45 @@ export function normalize(body, source, fetchedAt, location = LOCATION) {
 }
 
 export async function fetchSource(source, { fetchImpl = fetch, now = () => Date.now() / 1000,
-  timeoutMs = 15000, location = LOCATION } = {}) {
+  timeoutMs = 15000, location = LOCATION, onAttempt = null } = {}) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const startedAt = now();
+  let httpStatus = null, rateLimit = NO_RATE_LIMIT, stage = 'fetch';
+  // Issue #8: report every attempt once, classified, so a timeout can later be
+  // separated into queueing, HTTP rejection, network failure or a bad body.
+  const report = (outcome, error) => {
+    if (typeof onAttempt !== 'function') return;
+    try {
+      onAttempt({ source, startedAt, durationMs: Math.max(0, Math.round((now() - startedAt) * 1000)),
+        outcome, httpStatus, rateLimit, error: error ?? null });
+    } catch { /* Measurement must never change the fetch outcome. */ }
+  };
   try {
     const response = await fetchImpl(requestURL(source, location), { signal: controller.signal, cache: 'no-store', credentials: 'omit' });
-    if (!response.ok) throw new Error(response.status === 429 ? 'アクセス上限です。時間をおいて再試行してください' : `取得エラー（HTTP ${response.status}）`);
-    return normalize(await response.json(), source, Math.floor(now()), location);
+    httpStatus = Number.isInteger(response.status) ? response.status : null;
+    rateLimit = rateLimitFromHeaders(response.headers);
+    if (!response.ok) {
+      const error = new Error(response.status === 429 ? 'アクセス上限です。時間をおいて再試行してください' : `取得エラー（HTTP ${response.status}）`);
+      error.outcome = 'http';
+      throw error;
+    }
+    stage = 'body';
+    const body = await response.json();
+    stage = 'normalize';
+    const data = normalize(body, source, Math.floor(now()), location);
+    report('success', null);
+    return data;
   } catch (error) {
-    if (controller.signal.aborted) throw new Error('15秒以内に応答がありませんでした');
-    if (error instanceof TypeError) throw new Error('通信できませんでした');
-    if (error instanceof SyntaxError) throw new Error('応答を読み取れませんでした');
-    throw error;
+    let outcome, thrown;
+    if (controller.signal.aborted) { outcome = 'timeout'; thrown = new Error('15秒以内に応答がありませんでした'); }
+    else if (error?.outcome === 'http') { outcome = 'http'; thrown = error; }
+    else if (stage === 'normalize') { outcome = 'invalid'; thrown = error; }
+    else if (error instanceof SyntaxError) { outcome = 'parse'; thrown = new Error('応答を読み取れませんでした'); }
+    else if (error instanceof TypeError) { outcome = 'network'; thrown = new Error('通信できませんでした'); }
+    else { outcome = 'error'; thrown = error; }
+    report(outcome, thrown instanceof Error ? thrown.message : String(thrown));
+    throw thrown;
   } finally { clearTimeout(timer); }
 }
 

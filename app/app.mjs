@@ -3,6 +3,7 @@ import { LOCATION, SOURCES, refreshSources, windowData, weatherLabel, formatTime
 import { METRICS, compare, snapshot } from './comparison.mjs';
 import { openStore, restoreRecord } from './storage.mjs';
 import { SETTINGS_ID, validLocation, chooseLocation, searchLocations, nearbyCandidates } from './location.mjs';
+import { FETCH_LOG_ID, appendFetchLog, entriesFromRecord, fetchLogRecord } from './fetch-log.mjs';
 let location = LOCATION, locationGeneration = 0;
 
 const $ = id => document.getElementById(id);
@@ -17,6 +18,7 @@ if (refreshChannel) refreshChannel.onmessage = event => {
   if (Number.isFinite(event.data?.until)) { manualUntil = Math.max(manualUntil, event.data.until); renderStatus(); }
 };
 let store = null, lastDisplayed = null, comparisonBase = null, canRecord = false, ready = false;
+let fetchLog = [];
 let comparison = { changes: [], groups: [], onset: null, reason: 'first' };
 let displayGeneration = 0, saveQueue = Promise.resolve();
 let view = windowData(sources, Date.now() / 1000, location);
@@ -44,6 +46,47 @@ function recordAfterPaint() {
       } catch { $('storage-status').textContent = '端末に保存できませんでした。この画面内でのみ予報を保持します。'; $('fetch-details').open = true; }
     });
   }));
+}
+
+const outcomeText = entry => entry.outcome === 'success' ? `取得成功${entry.httpStatus ? `（HTTP ${entry.httpStatus}）` : ''}`
+  : entry.outcome === 'timeout' ? 'タイムアウト'
+  : entry.outcome === 'http' ? `HTTP ${entry.httpStatus ?? '?'}`
+  : entry.outcome === 'network' ? '通信エラー'
+  : entry.outcome === 'parse' ? '応答を読み取れませんでした'
+  : entry.outcome === 'invalid' ? '応答形式が不正です'
+  : 'エラー';
+
+function renderFetchLog() {
+  const el = $('fetch-log');
+  if (!el) return;
+  if (!fetchLog.length) { el.innerHTML = ''; return; }
+  const rows = fetchLog.slice(-10).reverse().map(entry => {
+    const parts = [`${formatDate(entry.startedAt)} ${formatTime(entry.startedAt)}`, SOURCES[entry.source]?.label ?? entry.source,
+      `${(entry.durationMs / 1000).toFixed(1)}秒`, outcomeText(entry)];
+    if (entry.rateLimit?.remaining != null) parts.push(`上限の残り ${entry.rateLimit.remaining}`);
+    if (entry.rateLimit?.retryAfter != null) parts.push(`再試行まで ${entry.rateLimit.retryAfter}秒`);
+    if (entry.effectiveType) parts.push(`回線 ${escape(entry.effectiveType)}`);
+    if (entry.error && entry.outcome !== 'success') parts.push(escape(entry.error));
+    return `<p data-fetch-outcome="${entry.outcome}">${parts.join(' · ')}</p>`;
+  });
+  el.innerHTML = `<p>取得の記録（直近${rows.length}件、この端末内のみ）</p>${rows.join('')}`;
+}
+
+// Issue #8: keep each attempt on the device so failures can be separated
+// into queueing, HTTP rejection, network failure or a bad response body.
+function recordAttempt(entry) {
+  fetchLog = appendFetchLog(fetchLog, { ...entry,
+    effectiveType: navigator.connection?.effectiveType ?? null,
+    visibility: document.visibilityState });
+  renderFetchLog();
+  if (!store) return;
+  const entries = fetchLog;
+  saveQueue = saveQueue.then(async () => {
+    try {
+      const outcome = await store.putRecord(fetchLogRecord(entries));
+      if (outcome === 'unsupported') { store.close(); store = null; }
+    } catch { /* The in-memory log remains available while this page is open. */ }
+  });
 }
 
 function renderChanges() {
@@ -137,6 +180,7 @@ function renderStatus() {
   const stale = dates.some(time => view.now - time >= 3600);
   $('stale-notice').hidden = !stale;
   $('stale-notice').textContent = '1時間以上前に取得した項目があります。最新の予報を反映していない可能性があります。';
+  renderFetchLog();
   $('refresh').disabled = busy || !ready || claimingRefresh || Date.now() < manualUntil;
   $('refresh').textContent = busy || claimingRefresh ? '取得中…' : Date.now() < manualUntil ? '更新は1回/h' : available === 0 || errors ? '再試行' : '予報を更新';
 }
@@ -165,7 +209,7 @@ async function refresh() {
   lastAttempt = Date.now();
   renderStatus();
   try {
-    const next = await refreshSources(sources, { location: requestedLocation });
+    const next = await refreshSources(sources, { location: requestedLocation, onAttempt: recordAttempt });
     if (generation !== locationGeneration) return;
     comparisonBase = lastDisplayed;
     sources = next;
@@ -299,6 +343,7 @@ try {
   if (settings && settings.schemaVersion !== 1) throw new Error('Unsupported settings');
   if (validLocation(settings?.active)) location = settings.active;
   else if (settings) $('location-notice').textContent = '保存地点を読み取れないため東京を表示します。地点を設定し直してください。';
+  fetchLog = entriesFromRecord(await store.read(FETCH_LOG_ID));
   const restored = restoreRecord(await store.read(location.id), Date.now() / 1000, location);
   if (restored.record?.last) {
     lastDisplayed = restored.record.last;

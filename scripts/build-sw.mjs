@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 const root = new URL('../app/', import.meta.url);
-const files = ['index.html', 'style.css', 'app.mjs', 'weather.mjs', 'comparison.mjs', 'storage.mjs', 'location.mjs', 'cities.json', 'pwa.mjs', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+const files = ['index.html', 'style.css', 'app.mjs', 'weather.mjs', 'comparison.mjs', 'storage.mjs', 'location.mjs', 'fetch-log.mjs', 'cities.json', 'pwa.mjs', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const hashes = Object.fromEntries(await Promise.all(files.map(async file => [file, digest(await readFile(new URL(file, root)))])));
 // Cached responses retain their headers. Policy-only changes need a new cache too.

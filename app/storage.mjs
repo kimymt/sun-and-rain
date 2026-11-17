@@ -107,6 +107,17 @@ export function openStore(factory = globalThis.indexedDB) {
             catch { store.transaction.abort(); }
           };
         }),
+        // Small auxiliary records (e.g. the fetch log) that are not forecast
+        // snapshots: same schema guard as write(), without snapshot checks.
+        putRecord: record => transact('readwrite', (store, set) => {
+          const req = store.get(record.location.id);
+          req.onsuccess = () => {
+            const old = req.result;
+            if (old && old.schemaVersion !== 1) { set('unsupported'); return; }
+            try { store.put(record); set('saved'); }
+            catch { store.transaction.abort(); }
+          };
+        }),
         close: () => db.close()
       });
     };

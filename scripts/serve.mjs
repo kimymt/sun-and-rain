@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 const app = fileURLToPath(new URL('../app/', import.meta.url));
-const allowed = new Map([['/', 'index.html'], ['/index.html', 'index.html'], ['/app.mjs', 'app.mjs'], ['/weather.mjs', 'weather.mjs'], ['/comparison.mjs', 'comparison.mjs'], ['/storage.mjs', 'storage.mjs'], ['/location.mjs', 'location.mjs'], ['/style.css', 'style.css'], ...['cities.json', 'pwa.mjs', 'sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'].map(file => ['/' + file, file])]);
+const allowed = new Map([['/', 'index.html'], ['/index.html', 'index.html'], ['/app.mjs', 'app.mjs'], ['/weather.mjs', 'weather.mjs'], ['/comparison.mjs', 'comparison.mjs'], ['/storage.mjs', 'storage.mjs'], ['/location.mjs', 'location.mjs'], ['/fetch-log.mjs', 'fetch-log.mjs'], ['/style.css', 'style.css'], ...['cities.json', 'pwa.mjs', 'sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'].map(file => ['/' + file, file])]);
 export function createServer() {
   return http.createServer(async (req, res) => {
     let pathname;

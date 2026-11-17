@@ -117,6 +117,64 @@ test('deadline aborts hung fetch and produces recoverable error', async () => {
     signal.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')));
   }) }), /応答がありません/);
 });
+test('attempts are reported once, classified, with status and rate-limit headers', async () => {
+  const attempts = [];
+  const onAttempt = entry => attempts.push(entry);
+  const headers = new Headers({ 'x-ratelimit-limit': '600', 'x-ratelimit-remaining': '599', 'x-ratelimit-cost': '1' });
+  await fetchSource('weather', { now: () => NOW, onAttempt,
+    fetchImpl: async () => ({ ok: true, status: 200, headers, json: async () => responseFixture('weather') }) });
+  assert.equal(attempts.length, 1);
+  assert.equal(attempts[0].source, 'weather');
+  assert.equal(attempts[0].startedAt, NOW);
+  assert.equal(attempts[0].outcome, 'success');
+  assert.equal(attempts[0].httpStatus, 200);
+  assert.equal(attempts[0].rateLimit.remaining, 599);
+  assert.equal(attempts[0].error, null);
+
+  attempts.length = 0;
+  await assert.rejects(fetchSource('uvpop', { now: () => NOW, onAttempt,
+    fetchImpl: async () => ({ ok: false, status: 429, headers: new Headers({ 'retry-after': '42' }) }) }), /アクセス上限/);
+  assert.equal(attempts.length, 1);
+  assert.equal(attempts[0].outcome, 'http');
+  assert.equal(attempts[0].httpStatus, 429);
+  assert.equal(attempts[0].rateLimit.retryAfter, 42);
+
+  attempts.length = 0;
+  await assert.rejects(fetchSource('uvpop', { now: () => NOW, onAttempt,
+    fetchImpl: async () => { throw new TypeError('offline'); } }), /通信できませんでした/);
+  assert.equal(attempts[0].outcome, 'network');
+  assert.equal(attempts[0].httpStatus, null);
+
+  attempts.length = 0;
+  const invalid = responseFixture('uvpop');
+  invalid.hourly_units.uv_index = 'W/m²';
+  await assert.rejects(fetchSource('uvpop', { now: () => NOW, onAttempt,
+    fetchImpl: async () => ({ ok: true, status: 200, json: async () => invalid }) }));
+  assert.equal(attempts[0].outcome, 'invalid');
+
+  attempts.length = 0;
+  await assert.rejects(fetchSource('uvpop', { now: () => NOW, onAttempt,
+    fetchImpl: async () => ({ ok: true, status: 200, json: async () => { throw new SyntaxError('bad json'); } }) }), /読み取れませんでした/);
+  assert.equal(attempts[0].outcome, 'parse');
+});
+test('a timed-out attempt is reported as timeout, not as a network failure', async () => {
+  const attempts = [];
+  await assert.rejects(fetchSource('uvpop', { timeoutMs: 10, onAttempt: entry => attempts.push(entry),
+    fetchImpl: (_, { signal }) => new Promise((resolve, reject) => {
+      signal.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')));
+    }) }), /応答がありません/);
+  assert.equal(attempts.length, 1);
+  assert.equal(attempts[0].outcome, 'timeout');
+  assert.match(attempts[0].error, /応答がありません/);
+});
+test('a throwing attempt callback never changes the fetch outcome', async () => {
+  const onAttempt = () => { throw new Error('log failed'); };
+  const data = await fetchSource('weather', { now: () => NOW, onAttempt,
+    fetchImpl: async () => ({ ok: true, json: async () => responseFixture('weather') }) });
+  assert.equal(data.source, 'weather');
+  await assert.rejects(fetchSource('uvpop', { now: () => NOW, onAttempt,
+    fetchImpl: async () => { throw new TypeError('offline'); } }), /通信できませんでした/);
+});
 test('unknown weather code is not guessed from sunshine or rain', () => {
   assert.equal(weatherLabel(null), '天気データなし');
   assert.equal(weatherLabel(65), '強い雨');
